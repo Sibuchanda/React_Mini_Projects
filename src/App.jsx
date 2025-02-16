@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import './App.css'
-import Toogle from './components/Toogle.jsx';
+import Todo from '../src/Todo/Todo';
+
 
 function App() {
 
   return (
     <>
-     <Toogle/>
+     <Todo/>
     </>
   )
 }
