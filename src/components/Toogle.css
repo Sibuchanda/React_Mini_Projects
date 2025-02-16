@@ -1,0 +1,9 @@
+.on{
+    background-color: rgb(61, 222, 61);
+    transform: translateX(87px);
+}
+
+.of{
+    background-color: red;
+    transform: translateX(0);
+}
