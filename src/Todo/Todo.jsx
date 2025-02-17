@@ -9,11 +9,13 @@ const Todo = () => {
     const [task, setTask] = useState([]); // Storing all the tasks entered through the input tag
     const [dateTime, setDateTime] = useState("");
 
+    // ------- Handle input anything in the input ----------- 
     const handleInputChange = (value) => {
         setInputValue(value);
     }
 
 
+  // ------- Handle For Submit ----------
     const handleFormSubmit = (event) => {
         event.preventDefault(); // As by default <form> reload the page
         if (!inputValue) return; // If there is no value in 'inputValue' then simply return. 
@@ -24,10 +26,9 @@ const Todo = () => {
         }
         setTask((preTask) => [...preTask, inputValue]); // Here we add the previous task and then new task
         setInputValue("");
-     
     }
-
-
+ 
+  // ------ Displaying the Live data and time-----------
    useEffect(()=>{
     const interval = setInterval(() => {
         const now = new Date();
@@ -40,6 +41,20 @@ const Todo = () => {
    }, [])
 
 
+    // ------- Deleting a single todo task ----------
+   const handleDeleteTodo = (currTask)=>{
+    // console.log(currTask);
+    const updatedTask = task.filter((value)=>value!==currTask);
+    setTask(updatedTask);
+   }
+
+   // --------- Deleting all Todo task ------
+   const handleDeleteAllTask = ()=>{
+    const val = confirm("Do you want to delete all the tasks?");
+    if(val){
+        setTask([]);
+    }
+   }
 
     return (
         <>
@@ -81,13 +96,18 @@ const Todo = () => {
                                     <span className='text-xl font-bold truncate w-[70%] overflow-hidden text-ellipsis whitespace-nowrap'>{currTask}</span>
                                     <div className='flex space-x-2'>
                                         <button className='text-2xl text-gray-500 hover:text-green-700 transition-colors duration-300 cursor-pointer'><MdCheckBoxOutlineBlank /></button>
-                                        <button className='text-2xl text-red-400 hover:text-red-600 cursor-pointer'><MdDelete /></button>
+                                        <button className='text-2xl text-red-400 hover:text-red-600 cursor-pointer' onClick={()=>handleDeleteTodo(currTask)}><MdDelete /></button>
                                     </div>
                                 </li>
                             );
                         })}
                     </ul>
                 </section>
+
+                {/* Clear All Todo button */}
+                 <section className='mt-4'>
+                    <button className='clearAllBtn w-24 h-12 cursor-pointer bg-red-500 text-white text-sm font-medium rounded-sm transition-all duration-300 hover:bg-red-600' onClick={handleDeleteAllTask}>Clear All</button>
+                 </section>
 
 
             </div>
