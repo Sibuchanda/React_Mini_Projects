@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Todo.css';
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
+import { MdCheckBoxOutlineBlank} from "react-icons/md";
+import { GoCheckbox } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 
 const Todo = () => {
@@ -96,9 +97,9 @@ const Todo = () => {
                         {task.map((currTask) => {
                             return (
                                 <li key={currTask.id} className='h-10 flex items-center bg-white rounded-lg my-2 px-3 justify-between'>
-                                    <span className={`${currTask.checked? "line-through" : ""} text-xl font-bold truncate w-[70%] overflow-hidden text-ellipsis whitespace-nowrap`}>{currTask.content}</span>
+                                    <span className={`${currTask.checked? "line-through decoration-2" : ""} text-xl font-bold truncate w-[70%] overflow-hidden text-ellipsis whitespace-nowrap`}>{currTask.content}</span>
                                     <div className='flex space-x-2'>
-                                        <button className='text-2xl text-gray-500 hover:text-green-700 transition-colors duration-300 cursor-pointer' onClick={()=>handleCheckTodo(currTask)}><MdCheckBoxOutlineBlank /></button>
+                                        <button className='text-2xl text-gray-500 hover:text-green-700 transition-colors duration-300 cursor-pointer' onClick={()=>handleCheckTodo(currTask)}>{currTask.checked ? <GoCheckbox /> : <MdCheckBoxOutlineBlank />}</button>
                                         <button className='text-2xl text-red-400 hover:text-red-600 cursor-pointer' onClick={()=>handleDeleteTodo(currTask.content)}><MdDelete /></button>
                                     </div>
                                 </li>
