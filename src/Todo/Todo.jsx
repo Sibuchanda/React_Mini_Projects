@@ -5,27 +5,25 @@ import { MdDelete } from "react-icons/md";
 
 const Todo = () => {
 
-    const [inputValue, setInputValue] = useState(""); // Storing the input values form the <input> tag. But one value at a time
-    const [task, setTask] = useState([]); // Storing all the tasks entered through the input tag
+    const [inputValue, setInputValue] = useState({}); // Storing the input values form the <input> tag. But one value at a time
+    const [task, setTask] = useState([]); // Storing all the tasks entered through the input tag.It holds data as an array of objects
     const [dateTime, setDateTime] = useState("");
 
     // ------- Handle input anything in the input ----------- 
     const handleInputChange = (value) => {
-        setInputValue(value);
+        setInputValue({id: value, content: value, checked: false}); //It is a object. Here we add id same as content because we validated that in todolist there will be only unique elements. NOTE:id can be any unque value
     }
 
 
   // ------- Handle For Submit ----------
     const handleFormSubmit = (event) => {
         event.preventDefault(); // As by default <form> reload the page
-        if (!inputValue) return; // If there is no value in 'inputValue' then simply return. 
-        if (task.includes(inputValue)) {
-            setInputValue("");
-            return; // If the task array contains any duplicate value then do not add it into the task array
-
-        }
-        setTask((preTask) => [...preTask, inputValue]); // Here we add the previous task and then new task
-        setInputValue("");
+        const {id, content, checked} = inputValue; // Destructuring it
+        if (!content) return; // If there is no value in 'content' then simply return. 
+        const ifTodoContentMatched = task.find((currTask)=>currTask.content === content); // If the task array contains any duplicate value then do not add it into the task array
+        if(ifTodoContentMatched) return;
+        setTask((preTask) => [...preTask, {id: id, content: content, checked: checked}]); // Here we add the previous task and then new task
+        setInputValue({id: "", content: "", checked: false});
     }
  
   // ------ Displaying the Live data and time-----------
@@ -42,9 +40,9 @@ const Todo = () => {
 
 
     // ------- Deleting a single todo task ----------
-   const handleDeleteTodo = (currTask)=>{
+   const handleDeleteTodo = (value)=>{
     // console.log(currTask);
-    const updatedTask = task.filter((value)=>value!==currTask);
+    const updatedTask = task.filter((currTask)=>currTask.content!==value);
     setTask(updatedTask);
    }
 
@@ -54,6 +52,11 @@ const Todo = () => {
     if(val){
         setTask([]);
     }
+   }
+
+   // -------------- Handling the check and uncheck feature ----------
+   const handleCheckTodo = (currTask)=>{
+     setTask(task.map(task=> task.id === currTask.id ? {...task, checked: !task.checked} : task))
    }
 
     return (
@@ -75,7 +78,7 @@ const Todo = () => {
                                 type="text"
                                 className="todoInput border-none outline-none flex-grow text-gray-700 text-sm ml-4"
                                 autoComplete="off"
-                                placeholder="Enter a task..." value={inputValue} onChange={(event) => handleInputChange(event.target.value)}
+                                placeholder="Enter a task..." value={inputValue.content} onChange={(event) => handleInputChange(event.target.value)}
                             />
                             <button
                                 type="submit"
@@ -90,13 +93,13 @@ const Todo = () => {
                 {/* Task list section */}
                 <section className='taskList mt-6'>
                     <ul className='w-80'>
-                        {task.map((currTask, index) => {
+                        {task.map((currTask) => {
                             return (
-                                <li key={index} className='h-10 flex items-center bg-white rounded-lg my-2 px-3 justify-between'>
-                                    <span className='text-xl font-bold truncate w-[70%] overflow-hidden text-ellipsis whitespace-nowrap'>{currTask}</span>
+                                <li key={currTask.id} className='h-10 flex items-center bg-white rounded-lg my-2 px-3 justify-between'>
+                                    <span className={`${currTask.checked? "line-through" : ""} text-xl font-bold truncate w-[70%] overflow-hidden text-ellipsis whitespace-nowrap`}>{currTask.content}</span>
                                     <div className='flex space-x-2'>
-                                        <button className='text-2xl text-gray-500 hover:text-green-700 transition-colors duration-300 cursor-pointer'><MdCheckBoxOutlineBlank /></button>
-                                        <button className='text-2xl text-red-400 hover:text-red-600 cursor-pointer' onClick={()=>handleDeleteTodo(currTask)}><MdDelete /></button>
+                                        <button className='text-2xl text-gray-500 hover:text-green-700 transition-colors duration-300 cursor-pointer' onClick={()=>handleCheckTodo(currTask)}><MdCheckBoxOutlineBlank /></button>
+                                        <button className='text-2xl text-red-400 hover:text-red-600 cursor-pointer' onClick={()=>handleDeleteTodo(currTask.content)}><MdDelete /></button>
                                     </div>
                                 </li>
                             );
