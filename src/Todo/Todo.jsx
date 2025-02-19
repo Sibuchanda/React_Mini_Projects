@@ -4,10 +4,16 @@ import { MdCheckBoxOutlineBlank} from "react-icons/md";
 import { GoCheckbox } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 
+const todokey = "todoDatas";
+
 const Todo = () => {
 
     const [inputValue, setInputValue] = useState({}); // Storing the input values form the <input> tag. But one value at a time
-    const [task, setTask] = useState([]); // Storing all the tasks entered through the input tag.It holds data as an array of objects
+    const [task, setTask] = useState(()=>{  // Storing all the tasks 
+         const getTodos = localStorage.getItem(todokey);
+         if(!getTodos) return [];   // As the task bydefault takes array, thats why if we do that write this line, then in the very first time there is no data in the localstorage and that's why it return undefined. But, we want empty array.
+         return JSON.parse(getTodos);  
+    }); 
     const [dateTime, setDateTime] = useState("");
 
     // ------- Handle input anything in the input ----------- 
@@ -59,6 +65,11 @@ const Todo = () => {
    const handleCheckTodo = (currTask)=>{
      setTask(task.map(task=> task.id === currTask.id ? {...task, checked: !task.checked} : task))
    }
+
+
+   // -------------- Adding data to Localstorage ----------
+  localStorage.setItem(todokey, JSON.stringify(task)); // As the value of setitem should be string that's why we convered task array into string
+
 
     return (
         <>
