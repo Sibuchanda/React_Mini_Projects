@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import Todo from '../src/Todo/Todo';
-// import Incrementdecrement from './miniChallenge/Incrementdecrement';
-import Registrationform from './miniChallenge/Registrationform';
+import IncrementTitle from './useEffect/IncrementTitle';
 
 
 function App() {
 
   return (
     <>
-     <Registrationform/>
+     <IncrementTitle/>
     </>
   )
 }
