@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import UseeffectCleanup from './useEffect/UseeffectCleanup'
+import HowNotToFetchApi from './fetchAPI/HowNotToFetchApi'
 
 
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-     <UseeffectCleanup/>
+     <HowNotToFetchApi/>
     </>
   )
 }
