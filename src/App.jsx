@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import Todo from '../src/Todo/Todo';
-import IncrementTitle from './useEffect/IncrementTitle';
+import UseeffectCleanup from './useEffect/UseeffectCleanup'
+
 
 
 function App() {
 
   return (
     <>
-     <IncrementTitle/>
+     <UseeffectCleanup/>
     </>
   )
 }
