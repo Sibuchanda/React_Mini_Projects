@@ -25,7 +25,7 @@ const HowNotToFetchApi = () => {
 
   return (
     <>
-    <div className='container w-screen h-screen bg-amber-100'>
+    <div className='container w-screen h-auto bg-amber-100'>
      <ul>
         {
             apiData.map((currData)=>{
