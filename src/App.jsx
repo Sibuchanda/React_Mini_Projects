@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import PokemonApi from './fetchAPI/PokemonApi'
+import Pokemon from './Pokemon/Pokemon'
 
 
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-     <PokemonApi/>
+     <Pokemon/>
     </>
   )
 }
