@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ForwardRef from './useref/ForwardRef'
+import UseidExample from './useid/UseidExample'
 
 
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-     <ForwardRef/>
+     <UseidExample/>
     </>
   )
 }
