@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import PropDrilling from './propDrilling/PropDrilling'
+import Home from './contextAPI/Home'
+import { BioProvider } from './contextAPI'
+import './contextAPI/index'
 
 
 
@@ -7,7 +9,9 @@ function App() {
 
   return (
     <>
-     <PropDrilling/>
+    <BioProvider>
+     <Home/>
+     </BioProvider>
     </>
   )
 }
