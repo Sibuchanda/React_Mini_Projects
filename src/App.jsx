@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import UseidExample from './useid/UseidExample'
+import PropDrilling from './propDrilling/PropDrilling'
 
 
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-     <UseidExample/>
+     <PropDrilling/>
     </>
   )
 }
