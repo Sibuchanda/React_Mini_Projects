@@ -1,6 +1,5 @@
 import { createContext } from "react";
 
-
 //1st Step 
 const BioContext = createContext();
 
