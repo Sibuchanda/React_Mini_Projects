@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 
 const ExpenseCalculation = () => {
@@ -11,7 +11,9 @@ const ExpenseCalculation = () => {
         return i;
     }
 
-    const total = sum();
+    const total = useMemo(()=> sum(), [])
+
+    // const total = sum();
 
     return <h1>Total expense : {total} </h1>
 
