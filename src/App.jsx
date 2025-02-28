@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import ExampleUseReducer from './useReducer'
+import Increment from './useMemo/Increment'
 
 
 function App() {
 
   return (
     <>
-     <ExampleUseReducer/>
+     <Increment/>
     </>
   )
 }
