@@ -4,6 +4,7 @@ import AppLayout from './ReactRouter/DynamicNavigation/AppLayout';
 import Services from './ReactRouter/DynamicNavigation/Services';
 import About from './ReactRouter/DynamicNavigation/About';
 import Contact from './ReactRouter/DynamicNavigation/Contact';
+import Errorpage from './ReactRouter/DynamicNavigation/Errorpage';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
    {
     path: '/',
     element: <AppLayout/>,
+    errorElement: <Errorpage/>,
     children: [
       {
         path: '/service',
