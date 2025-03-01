@@ -1,7 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
+
+    const handleActiveLink = ({isActive})=>{
+      return{
+        color: isActive ? "red" : "white",
+      };
+    };
+
+
   return (
     <header className="bg-gradient-to-r from-blue-600 to-indigo-800 shadow-lg">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -13,36 +21,36 @@ const Header = () => {
         <nav>
           <ul className="flex space-x-6">
             <li>
-              <Link
+              <NavLink
                 to="/"
                 className="text-white hover:text-yellow-300 transition duration-300 text-lg font-medium"
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/service"
-                className="text-white hover:text-yellow-300 transition duration-300 text-lg font-medium"
+                className="text-white hover:text-yellow-300 transition duration-300 text-lg font-medium" style={handleActiveLink}
               >
                 Services
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/about"
                 className="text-white hover:text-yellow-300 transition duration-300 text-lg font-medium"
               >
                 About Us
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/contact"
                 className="text-white hover:text-yellow-300 transition duration-300 text-lg font-medium"
               >
                 Contact Us
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
