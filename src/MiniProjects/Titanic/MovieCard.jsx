@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 const MovieCard = ({ currMovie }) => {
 
@@ -12,7 +13,9 @@ const MovieCard = ({ currMovie }) => {
                     <img src={Poster} alt={imdbID} className='w-50 h-60' />
                 </div>
                 <div className="buttonContainer">
+                    <NavLink to={`/movie/${imdbID}`}>
                     <button className='w-auto h-auto border p-2'> Watch Now </button>
+                    </NavLink>
                 </div>
             </li>
 

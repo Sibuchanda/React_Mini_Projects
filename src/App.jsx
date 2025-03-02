@@ -4,6 +4,9 @@ import AppLayout2 from './MiniProjects/Titanic/AppLayout2';
 import About from './MiniProjects/Titanic/About';
 import getMovieData from './MiniProjects/Titanic/ApiData';
 import Movies from './MiniProjects/Titanic/Movies';
+import MovieDetails from './MiniProjects/Titanic/MovieDetails';
+import getSingleMovieData from './MiniProjects/Titanic/GetMovieDetails';
+
 
 function App() {
 
@@ -21,6 +24,11 @@ function App() {
         path: '/movie',
         element: <Movies/>,
         loader: getMovieData,
+      },
+      {
+        path: '/movie/:movieID',
+        element: <MovieDetails/>,
+        loader: getSingleMovieData,
       },
     ]
    }
