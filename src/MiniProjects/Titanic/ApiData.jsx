@@ -2,7 +2,7 @@
 const getMovieData = async ()=>{
 
     try{
-        const response = await fetch("http://www.omdbapi.com/?i=tt3896198&apikey=1c12799f&s=titanic&page=1")
+        const response = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${import.meta.env.VITE_THAPA_API_KEY}=titanic&page=1`)
 
         const data = response.json();
         return data;
