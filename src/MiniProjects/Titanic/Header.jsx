@@ -44,6 +44,14 @@ const Header = () => {
                 About Us
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/contact"
+                className="text-white hover:text-yellow-300 transition duration-300 text-lg font-medium"
+              >
+                Contact Us
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>

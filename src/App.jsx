@@ -6,6 +6,7 @@ import getMovieData from './MiniProjects/Titanic/ApiData';
 import Movies from './MiniProjects/Titanic/Movies';
 import MovieDetails from './MiniProjects/Titanic/MovieDetails';
 import getSingleMovieData from './MiniProjects/Titanic/GetMovieDetails';
+import {Contact, getContactData} from './ReactRouter/FormComponent/Contact';
 
 
 function App() {
@@ -29,6 +30,12 @@ function App() {
         path: '/movie/:movieID',
         element: <MovieDetails/>,
         loader: getSingleMovieData,
+      },
+      {
+        path: '/contact',
+        element: <Contact/>,
+        action: getContactData,
+
       },
     ]
    }
