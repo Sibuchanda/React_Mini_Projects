@@ -1,43 +1,31 @@
-import { useState } from 'react'
-import {createBrowserRouter, RouterProvider } from 'react-router-dom'
-import AppLayout2 from './MiniProjects/Titanic/AppLayout2';
-import About from './MiniProjects/Titanic/About';
-import getMovieData from './MiniProjects/Titanic/ApiData';
-import Movies from './MiniProjects/Titanic/Movies';
-import MovieDetails from './MiniProjects/Titanic/MovieDetails';
-import getSingleMovieData from './MiniProjects/Titanic/GetMovieDetails';
+import React, { useEffect } from 'react'
+import getPosts from './Axios_CRUD/API/GetAPI';
+
+const App = () => {
+
+  // console.log(getPosts());
+   const getAllPostsData = async ()=>{
+        try{
+          const data = await getPosts();
+          console.log(data.data[0]);
+        }catch(err){
+          console.log(err);
+        }
+   };
+
+  useEffect(()=>{
+    getAllPostsData();
+  },[]);
 
 
-function App() {
-
-  const router = createBrowserRouter([
-
-   {
-    path: '/',
-    element: <AppLayout2/>,
-    children: [
-      {
-        path: '/about',
-        element: <About/>
-      },
-      {
-        path: '/movie',
-        element: <Movies/>,
-        loader: getMovieData,
-      },
-      {
-        path: '/movie/:movieID',
-        element: <MovieDetails/>,
-        loader: getSingleMovieData,
-      },
-    ]
-   }
-
-  ]);
 
 
-  return <RouterProvider router={router} />
+  return (
+   <>
+   <h1>Hello APP</h1>
+   </>
+  )
 }
 
 
-export default App
+export default App;
