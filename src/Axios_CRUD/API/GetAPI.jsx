@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+// creates a reusable axios instance with default settings.
 const api = axios.create({
     baseURL : "https://jsonplaceholder.typicode.com",
 });
