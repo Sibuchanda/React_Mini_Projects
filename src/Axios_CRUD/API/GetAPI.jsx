@@ -10,4 +10,10 @@ const getPosts = ()=>{
     return api.get("/posts");  // It appends /posts at the end of baseURL and then returns the result
 }
 
-export default getPosts;
+// Delete posts
+
+const deletePosts = (id)=>{
+  return api.delete(`/posts/${id}`);
+}
+
+export  { getPosts, deletePosts };
