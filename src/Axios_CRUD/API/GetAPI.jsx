@@ -11,9 +11,13 @@ const getPosts = ()=>{
 }
 
 // Delete posts
-
 const deletePosts = (id)=>{
   return api.delete(`/posts/${id}`);
 }
 
-export  { getPosts, deletePosts };
+// Create posts
+const createPost = (data)=>{
+  return api.post("/posts", data);
+}
+
+export  { getPosts, deletePosts, createPost };
