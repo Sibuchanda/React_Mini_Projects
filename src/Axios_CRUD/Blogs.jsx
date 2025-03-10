@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { createPost, deletePosts, getPosts } from './API/GetAPI';
-import Card from './Card';
 
 const Blogs = () => {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); // API data
   const [addPost, setAddPost] = useState({
     title: "",
     body: ""

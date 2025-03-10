@@ -1,11 +1,11 @@
 import React from 'react'
-import Blogs from './Axios_CRUD/Blogs';
+import Card from './Accordion/Card';
 
 const App = () => {
 
   return (
    <>
-   <Blogs/>
+   <Card/>
    </>
   )
 }
