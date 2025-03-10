@@ -5,11 +5,18 @@ import FAQcard from './FAQcard';
 const Card = () => {
 
  const [faqData, setFaqData] = useState([]);
+ const [ isActive, setIsActive ] = useState(false);
 
   useEffect(()=>{
     setFaqData(FAQ);
     console.log(faqData)
-  },[])
+  },[]);
+
+
+ const handleToggle = (id)=>{
+    setIsActive((preId)=>(preId === id ? false : id ))
+ }
+
 
   return (
     <>
@@ -19,7 +26,7 @@ const Card = () => {
         {
             faqData.map((currEle)=>{
                 return(
-                   <FAQcard key={currEle.id} currData={currEle}/>
+                   <FAQcard key={currEle.id} currData={currEle} isActive={isActive === currEle.id} ontoggle={()=>handleToggle(currEle.id)}/>
                 )
             })
         }
