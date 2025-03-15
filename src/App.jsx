@@ -1,12 +1,13 @@
 import React from 'react'
-import Card from './Accordion/Card';
+import Message from './HigherOrderComponent/Message';
+import Border from './HigherOrderComponent/Border';
+
+const UpdatedMessage = Border(Message);
 
 const App = () => {
 
   return (
-   <>
-   <Card/>
-   </>
+   <UpdatedMessage text="Welcome to React Higher Order Component(HOC)"/>
   )
 }
 
